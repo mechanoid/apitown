@@ -1,0 +1,19 @@
+---
+pet-instance-path:
+  get:
+    summary: Info for a specific pet
+    parameters:
+      "$ref": http://localhost:5001/specs/components/petstore-example.3.0-parameters.yaml#pet-parameters
+    responses:
+      '200':
+        description: Expected response to a valid request
+        content:
+          application/json:
+            schema:
+              "$ref": "/specs/petstore-example.3.0.yaml#/components/schemas/Pet"
+      default:
+        description: unexpected error
+        content:
+          application/json:
+            schema:
+              "$ref": "/specs/petstore-example.3.0.yaml#/components/schemas/Error"
