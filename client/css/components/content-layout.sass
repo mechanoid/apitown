@@ -1,0 +1,24 @@
+st-content-wrapper, st-content-row, st-content-container, st-content-navigation
+  display: block
+
+st-content-wrapper
+  @include make-container()
+
+  st-content-row
+    @include make-row()
+
+
+  st-content-navigation, st-content-container
+    @include make-col-ready()
+
+  @include media-breakpoint-up(md)
+    st-content-navigation
+      @include make-col(3)
+    st-content-container
+      @include make-col(9)
+
+  @include media-breakpoint-up(lg)
+    st-content-navigation
+      @include make-col(2)
+    st-content-container
+      @include make-col(10)

@@ -1,9 +1,18 @@
 extend layouts/base
 
 block content
-  stown-schema(schema="...")
-    h1 failed pretty hard.
+  st-content-wrapper
+    st-content-row
+      st-content-navigation
+        nav
+          ul
+            li
+              a(href="#") Link 1
 
-    p This API tool has been written for modern people...., and you don't seem to use a modern browser.
+      st-content-container
+        st-schema(schema="...")
+          h1 failed pretty hard.
 
-    p Just joking. When you can read this, I have failed in catching all errors or I was too lazy. Sorry for that! But you really should be able to fix this problem by using an up-2-date browser.
+          p This API tool has been written for modern people...., and you don't seem to use a modern browser.
+
+          p Just joking. When you can read this, I have failed in catching all errors or I was too lazy. Sorry for that! But you really should be able to fix this problem by using an up-2-date browser.
