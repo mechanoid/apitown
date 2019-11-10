@@ -1,16 +1,6 @@
-import path from 'path'
-import express from 'express'
-import jsTemplates from './lib/js-templates.js'
+import app from './lib/app.js'
+import schemaController from './lib/controllers/schema.js'
 
-const app = express()
-
-jsTemplates(app)
-app.set('views', path.resolve(process.cwd(), 'server/views'))
-
-app.use('/example-specs', express.static('./example-specs'))
-
-app.get('/', (req, res) => {
-  res.render('schema', { exampleData: 'hello world' })
-})
+app.get('/', schemaController)
 
 export default app
