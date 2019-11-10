@@ -5,12 +5,15 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node --experimental-modules -r dotenv/config ./bin/schematown.js"
+    "build:css": "sass client/css/main.sass dist/css/main.css",
+    "start": "node --experimental-modules -r dotenv/config ./bin/schematown.js",
+    "prestart": "npm run build:css"
   },
   "description": "",
   "type": "module",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pug": "^2.0.4",

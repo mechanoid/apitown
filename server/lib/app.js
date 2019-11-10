@@ -1,16 +1,20 @@
 import express from 'express'
+import chalk from 'chalk'
 import 'pug'
+import { provideAsset } from './helpers/assets.js'
 
-import { provideNodeModuleAsset } from './helpers/vendor-node-module-assets.js'
+console.info('')
 
 const app = express()
 
 app.set('view engine', 'pug')
 app.set('views', 'server/views')
 
-const bootstrap = provideNodeModuleAsset('node_modules/bootstrap/dist/css/bootstrap.css', { app })
-app.locals.assets = { bootstrap } // make assetPaths availabel in views
+const mainCSS = provideAsset('dist/css/main.css', { app, root: 'dist', prefix: '/assets' })
+app.locals.assets = { mainCSS } // make assetPaths availabel in views
 
-app.use('/example-specs', express.static('./example-specs'))
+const exampleSpecPath = '/example-specs'
+console.info(`serve ${chalk.yellow(exampleSpecPath)}`)
+app.use(exampleSpecPath, express.static('./example-specs'))
 
 export default app
