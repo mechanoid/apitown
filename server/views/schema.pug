@@ -1,13 +1,30 @@
 extend layouts/base
 
 block content
+
   st-content-wrapper
     st-content-row
       st-content-navigation
         nav
+          p.nav-headline Resources
           ul
+
             li
-              a(href="#") Link 1
+              a(href="#")
+                | Dog
+                span.link-rel pet:dog
+
+            li
+              a(href="#")
+                | Dog Food
+                span.link-rel pet:dog-food
+
+            li
+              a(href="#")
+                | Dog School
+                span.link-rel pet:dog-school
+
+
 
       st-content-container
         st-schema(schema="...")
