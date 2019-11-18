@@ -8,11 +8,17 @@ const apiSpecTemplate = spec => html`
 
 class ATApiSpec extends HTMLElement {
   async connectedCallback () {
+    const spec = await skema(this.specReference)
+    console.log(spec)
     this.render()
   }
 
   async render () {
     render(apiSpecTemplate('world'), this)
+  }
+
+  get specReference () {
+    return this.getAttribute('spec')
   }
 }
 
