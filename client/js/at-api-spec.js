@@ -2,22 +2,22 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import skema from '../../vendor/skeme/index.js'
 
-const apiSpecTemplate = spec => html`
-  <p>hello ${spec}!!!!</p>
+export const apiSpecTemplate = spec => html`
+  <at-api-spec-header spec=${spec}/>
 `
 
 class ATApiSpec extends HTMLElement {
   async connectedCallback () {
-    const spec = await skema(this.specReference)
-    console.log(spec)
+    this.spec = await skema(this.apiSpec)
+
     this.render()
   }
 
-  async render () {
-    render(apiSpecTemplate('world'), this)
+  render () {
+    render(apiSpecTemplate(this.spec), this)
   }
 
-  get specReference () {
+  get apiSpec () {
     return this.getAttribute('spec')
   }
 }
