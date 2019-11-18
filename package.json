@@ -1,5 +1,5 @@
 {
-  "name": "schemetown",
+  "name": "apitown",
   "version": "0.0.1",
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
@@ -7,7 +7,7 @@
   "scripts": {
     "build:css": "sass client/css/main.sass dist/css/main.css",
     "watch:css": "npm run build:css && npm run build:css -- --watch",
-    "start": "node --experimental-modules -r dotenv/config ./bin/schematown.js",
+    "start": "node --experimental-modules -r dotenv/config ./bin/apitown.js",
     "build": "npm run build:css",
     "watch": "npm run watch:css"
   },
@@ -18,8 +18,10 @@
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "lit-html": "^1.1.2",
     "pug": "^2.0.4",
-    "sass": "^1.23.3"
+    "sass": "^1.23.3",
+    "skeme": "file:../skeme"
   },
   "devDependencies": {
     "eslint": "^6.6.0",

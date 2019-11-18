@@ -2,11 +2,13 @@ doctype
 html(lang="en" dir="ltr")
   head
     meta(charset='utf-8')
-    title Schematown
+    title APITown
+
+    link(rel="stylesheet" href=assets.vendor.mainCSS.publicPath)
 
     //- usually appended / prepended, but can be replaced
     block scripts
-      link(rel="stylesheet" href=assets.mainCSS.publicPath)
+      script(type="module" src=assets.app('js/at-api-spec.js'))
 
 
   body

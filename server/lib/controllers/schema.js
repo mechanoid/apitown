@@ -1,5 +1,4 @@
 export default ({ query, params }, res) => {
-  console.log(params)
-  console.log(query)
-  res.render('schema')
+  const spec = query.spec
+  res.render('schema', { spec })
 }
