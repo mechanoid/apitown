@@ -1,6 +1,6 @@
 import app from './lib/app.js'
-import schemaController from './lib/controllers/schema.js'
+import apiSpecController from './lib/controllers/api-spec.js'
 
-app.get('/', schemaController)
+app.get('/', apiSpecController)
 
 export default app
