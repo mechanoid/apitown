@@ -117,7 +117,7 @@
       }
     },
     "/pets/{petId}": {
-      "$ref": "http://localhost:5001/specs/components/petstore-example.3.0-paths.json#/pet-instance-path",
+      "$ref": "./components/petstore-example.3.0-paths.json#/pet-instance-path",
       "x-link-rel": "ps:pet",
       "summary": "Pet"
     }

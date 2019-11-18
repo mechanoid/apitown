@@ -83,7 +83,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
   "/pets/{petId}":
-    "$ref": http://localhost:5001/specs/components/petstore-example.3.0-paths.yaml#/pet-instance-path
+    "$ref": http://localhost:5002/example-specs/components/petstore-example.3.0-paths.yaml#/pet-instance-path
     x-link-rel: ps:pet
     summary: Pet
 components:

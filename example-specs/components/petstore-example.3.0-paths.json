@@ -3,7 +3,7 @@
     "get": {
       "summary": "Info for a specific pet",
       "parameters": {
-        "$ref": "http://localhost:5001/specs/components/petstore-example.3.0-parameters.json#pet-parameters"
+        "$ref": "http://localhost:5002/example-specs/components/petstore-example.3.0-parameters.json#pet-parameters"
       },
       "responses": {
         "200": {
@@ -11,7 +11,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "/specs/petstore-example.3.0.json#/components/schemas/Pet"
+                "$ref": "/example-specs/petstore-example.3.0.json#/components/schemas/Pet"
               }
             }
           }
@@ -21,7 +21,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "/specs/petstore-example.3.0.json#/components/schemas/Error"
+                "$ref": "/example-specs/petstore-example.3.0.json#/components/schemas/Error"
               }
             }
           }
