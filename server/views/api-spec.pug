@@ -25,8 +25,11 @@ block content
                 span.link-rel pet:dog-school
 
       at-content-container
-        at-api-spec(spec=spec)
-          .message
-            | APITown
-            = " "
-            = spec
+        if spec
+          at-api-spec(spec=spec)
+            .message
+              | APITown
+              = " "
+              = spec
+        else
+          p No Spec has been provided. Please provide a valid `spec` query parameter.

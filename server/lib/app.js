@@ -19,7 +19,11 @@ const mainCSS = provideAsset('dist/css/main.css', { app, root: 'dist', prefix: '
 const jsYaml = provideAsset('node_modules/js-yaml/dist/js-yaml.min.js', { app, root: 'node_modules', prefix: '/assets/vendor' })
 
 // serve dependencassets, so they can be included in JS imports
-const vendorLibs = ['node_modules/skeme/index.js', 'node_modules/lit-html/lit-html.js', 'node_modules/lit-html/lib']
+const vendorLibs = [
+  'node_modules/skeme/index.js',
+  'node_modules/lit-html/lit-html.js',
+  'node_modules/lit-html/lib']
+
 vendorLibs.forEach(lib => provideAsset(lib, { app, root: 'node_modules', prefix: '/assets/vendor' }))
 
 app.locals.assets = {}
