@@ -1,20 +1,21 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import skema from '../../vendor/skeme/index.js'
+import { apiSpecHeader } from './at-api-spec-header.js'
 
-export const apiSpecTemplate = spec => html`
-  <at-api-spec-header spec=${spec}/>
+//
+export const apiSpec = spec => html`
+  ${apiSpecHeader({ info: spec.info })}
 `
 
 class ATApiSpec extends HTMLElement {
   async connectedCallback () {
     this.spec = await skema(this.apiSpec)
-
     this.render()
   }
 
   render () {
-    render(apiSpecTemplate(this.spec), this)
+    render(apiSpec(this.spec), this)
   }
 
   get apiSpec () {

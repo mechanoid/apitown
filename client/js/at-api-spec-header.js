@@ -1,20 +1,42 @@
 /* global customElements, HTMLElement */
-import { html, render, directive } from '../../vendor/lit-html/lit-html.js'
+import { html, render } from '../../vendor/lit-html/lit-html.js'
 
-const specHeaderTemplate = spec => html`<h1>${JSON.stringify(spec)}</h1>`
+const template = ({ title }) => html`
+  <h1>${title}</h1>
+`
 
-export class ApiSpecHeader extends HTMLElement {
+class ApiSpecHeader extends HTMLElement {
+  constructor ({ info } = {}) {
+    super()
+    this.info = info
+  }
+
   connectedCallback () {
     this.render()
   }
 
   render () {
-    render(specHeaderTemplate(this.spec), this)
+    render(template({
+      title: this.title
+    }), this)
   }
 
-  get spec () {
-    this.spec = this.getAttribute('spec')
+  set info (info) {
+    this._info = info // apply validations
+  }
+
+  get info () {
+    return this._info
+  }
+
+  get title () {
+    this._title = this.info.title || this.getAttribute('title')
+    return this._title
   }
 }
 
 customElements.define('at-api-spec-header', ApiSpecHeader)
+
+export const apiSpecHeader = (options = {}) => {
+  return new ApiSpecHeader(options)
+}
