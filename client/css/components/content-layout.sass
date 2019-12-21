@@ -1,24 +1,26 @@
-at-content-wrapper, at-content-row, at-content-container, at-content-navigation
+at-content-wrapper
   display: block
+  +make-container()
 
-  at-content-wrapper
-    @include make-container()
+at-content-row
+  +make-row()
 
-  at-content-row
-    @include make-row()
+at-content-navigation, at-content-container
+  +make-col-ready()
 
 
-  at-content-navigation, at-content-container
-    @include make-col-ready()
+@include media-breakpoint-up(md)
+  at-content-navigation
+    +make-col(3)
 
-  @include media-breakpoint-up(md)
-    at-content-navigation
-      @include make-col(3)
-    at-content-container
-      @include make-col(9)
+  at-content-container
+    +make-col(9)
+    padding-top: 1rem
 
-  @include media-breakpoint-up(lg)
-    at-content-navigation
-      @include make-col(2)
-    at-content-container
-      @include make-col(10)
+
+@include media-breakpoint-up(lg)
+  at-content-navigation
+    +make-col(2)
+  at-content-container
+    +make-col(10)
+    padding-top: 2rem
