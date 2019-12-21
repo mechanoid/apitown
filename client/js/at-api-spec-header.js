@@ -1,9 +1,25 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
+import { richText, link } from './helpers/rendering.js'
 
-const template = ({ title }) => html`
-  <h1>${title}</h1>
-`
+const descriptionTemplate = description => html`<p>${richText(description)}</p>`
+
+const contactTemplate = ({ name, url, email }) => html`
+  <address class="card">
+    <h3>Contact</h3>
+    ${name}
+    ${url ? link(url) : ''}
+    ${email ? `E-Mail: ${email}` : ''}
+  </address>`
+
+const template = ({ title, description, termsOfService, contact }) => html`
+  <header>
+    <h1>${title}</h1>
+
+    ${description ? descriptionTemplate(description) : ''}
+    ${termsOfService ? link('Terms of Service', termsOfService) : ''}
+    ${contact ? contactTemplate(contact) : ''}
+  </header>`
 
 class ApiSpecHeader extends HTMLElement {
   constructor ({ info } = {}) {
@@ -16,9 +32,7 @@ class ApiSpecHeader extends HTMLElement {
   }
 
   render () {
-    render(template({
-      title: this.title
-    }), this)
+    render(template({ ...this.info }), this)
   }
 
   set info (info) {

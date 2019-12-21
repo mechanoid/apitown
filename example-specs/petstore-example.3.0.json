@@ -4,6 +4,11 @@
     "version": "1.0.0",
     "title": "Swagger Petstore",
     "description": "A little, very basic, OpenAPI example, describing a petstore API",
+    "contact": {
+      "name": "Example Organization",
+      "url": "http://www.example-organization.com",
+      "email": "info@example-organization.com"
+    },
     "license": {
       "name": "MIT"
     }

@@ -22,7 +22,10 @@ const jsYaml = provideAsset('node_modules/js-yaml/dist/js-yaml.min.js', { app, r
 const vendorLibs = [
   'node_modules/skeme/index.js',
   'node_modules/lit-html/lit-html.js',
-  'node_modules/lit-html/lib']
+  'node_modules/lit-html/directives',
+  'node_modules/lit-html/lib',
+  'node_modules/marked/lib/marked.esm.js'
+]
 
 vendorLibs.forEach(lib => provideAsset(lib, { app, root: 'node_modules', prefix: '/assets/vendor' }))
 
