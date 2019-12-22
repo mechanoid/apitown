@@ -2,10 +2,12 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import skema from '../../vendor/skeme/index.js'
 import { apiSpecHeader } from './at-api-spec-header.js'
+import { apiSpecFooter } from './at-api-spec-footer.js'
 
 //
 export const apiSpec = spec => html`
   ${apiSpecHeader({ info: spec.info })}
+  ${apiSpecFooter({ info: spec.info })}
 `
 
 class ATApiSpec extends HTMLElement {

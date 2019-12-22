@@ -4,21 +4,16 @@ import { richText, link } from './helpers/rendering.js'
 
 const descriptionTemplate = description => html`<p>${richText(description)}</p>`
 
-const contactTemplate = ({ name, url, email }) => html`
-  <address class="card">
-    <h3>Contact</h3>
-    ${name}
-    ${url ? link(url) : ''}
-    ${email ? `E-Mail: ${email}` : ''}
-  </address>`
-
-const template = ({ title, description, termsOfService, contact }) => html`
+const template = ({ title, description, termsOfService, contact, license, version }) => html`
   <header>
     <h1>${title}</h1>
+    <div class="meta-info">
+      ${license ? html`License: ${link(license.name, license.url)}` : ''}
+      ${version ? `Version: ${version}` : ''}
+    </div>
 
     ${description ? descriptionTemplate(description) : ''}
     ${termsOfService ? link('Terms of Service', termsOfService) : ''}
-    ${contact ? contactTemplate(contact) : ''}
   </header>`
 
 class ApiSpecHeader extends HTMLElement {
