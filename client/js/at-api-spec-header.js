@@ -30,14 +30,6 @@ class ApiSpecHeader extends HTMLElement {
     render(template({ ...this.info }), this)
   }
 
-  set info (info) {
-    this._info = info // apply validations
-  }
-
-  get info () {
-    return this._info
-  }
-
   get title () {
     this._title = this.info.title || this.getAttribute('title')
     return this._title

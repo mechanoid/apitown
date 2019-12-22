@@ -23,7 +23,8 @@
     "marked": "^0.8.0",
     "pug": "^2.0.4",
     "sass": "^1.23.3",
-    "skeme": "file:../skeme"
+    "skeme": "file:../skeme",
+    "transliteration": "^2.1.8"
   },
   "devDependencies": {
     "eslint": "^6.6.0",

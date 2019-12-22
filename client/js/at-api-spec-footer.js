@@ -10,7 +10,7 @@ const contactTemplate = ({ name, url, email }) => html`
     ${email ? `E-Mail: ${email}` : ''}
   </address>`
 
-const template = ({ title, description, termsOfService, contact, license, version }) => html`
+const template = ({ contact }) => html`
   <footer>
     ${contact ? contactTemplate(contact) : ''}
   </footer>`

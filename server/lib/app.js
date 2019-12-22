@@ -24,7 +24,8 @@ const vendorLibs = [
   'node_modules/lit-html/lit-html.js',
   'node_modules/lit-html/directives',
   'node_modules/lit-html/lib',
-  'node_modules/marked/lib/marked.esm.js'
+  'node_modules/marked/lib/marked.esm.js',
+  'node_modules/transliteration/dist/browser/bundle.esm.min.js'
 ]
 
 vendorLibs.forEach(lib => provideAsset(lib, { app, root: 'node_modules', prefix: '/assets/vendor' }))
