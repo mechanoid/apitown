@@ -15,7 +15,7 @@ export const apiSpec = spec => html`
 
       <at-content-container>
         ${apiSpecHeader({ info: spec.info, externalDocs: spec.externalDocs })}
-        ${Object.entries(spec.paths).map(([pathName, path]) => apiSpecPath({ spec, pathName, path }))}
+        ${Object.entries(spec.paths).map(([path, pathItem]) => apiSpecPath({ spec, path, pathItem }))}
         ${apiSpecFooter({ info: spec.info })}
       </at-content-container>
     </at-content-row>

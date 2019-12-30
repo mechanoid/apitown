@@ -3,9 +3,10 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 // import { slugify } from '../../vendor/transliteration/dist/browser/bundle.esm.min.js'
 // import { richText, link } from './helpers/rendering.js'
+import { pathItemLink } from './helpers/path-item-helper.js'
 
 const pathLinkTemplate = ([path, pathItem]) => html`<li>
-  <a href="">
+  <a href="${pathItemLink(path, pathItem)}">
     ${pathItem['x-resource-name'] ? pathItem['x-resource-name'] : path}
     ${pathItem['x-link-rel'] ? html`<span class="link-rel">${pathItem['x-link-rel']}</span>` : ''}
   </a>

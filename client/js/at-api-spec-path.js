@@ -1,26 +1,31 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
-import { slugify } from '../../vendor/transliteration/dist/browser/bundle.esm.min.js'
-// import { richText, link } from './helpers/rendering.js'
+import { richText } from './helpers/rendering.js'
+import { slug, pathID } from './helpers/path-item-helper.js'
 
-const template = ({ path, pathItem }) => html`fubar`
+const template = ({ path, pathItem }) => html`
+  <header>
+    <a name="${slug(path, pathItem)}"></a>
+    <h2>${pathID(path, pathItem)}</h2>
+    ${pathItem.summary ? html`<p class="summary">${pathItem.summary}</p>` : ''}
+    ${pathItem.description ? html`<div class="description">${richText(pathItem.description)}</div>` : ''}
+  </header>
+`
 
 class ApiSpecPath extends HTMLElement {
-  constructor ({ spec, pathName, path } = {}) {
+  constructor ({ spec, path, pathItem } = {}) {
     super()
     this.spec = spec
     this.path = path
-    this.pathName = pathName
-    this.pathSlug = slugify(this.pathName)
+    this.pathItem = pathItem
   }
 
   connectedCallback () {
-    // console.log(this.pathName, this.pathSlug)
     this.render()
   }
 
   render () {
-    render(template({ ...this.path }), this)
+    render(template({ path: this.path, pathItem: this.pathItem }), this)
   }
 }
 
