@@ -3,7 +3,7 @@ import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { slugify } from '../../vendor/transliteration/dist/browser/bundle.esm.min.js'
 // import { richText, link } from './helpers/rendering.js'
 
-const template = ({ path, pathConfig }) => html`fubar`
+const template = ({ path, pathItem }) => html`fubar`
 
 class ApiSpecPath extends HTMLElement {
   constructor ({ spec, pathName, path } = {}) {

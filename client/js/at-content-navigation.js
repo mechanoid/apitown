@@ -4,10 +4,10 @@ import { html, render } from '../../vendor/lit-html/lit-html.js'
 // import { slugify } from '../../vendor/transliteration/dist/browser/bundle.esm.min.js'
 // import { richText, link } from './helpers/rendering.js'
 
-const pathLinkTemplate = ([path, pathConfig]) => html`<li>
+const pathLinkTemplate = ([path, pathItem]) => html`<li>
   <a href="">
-    ${pathConfig['x-resource-name'] ? pathConfig['x-resource-name'] : path}
-    ${pathConfig['x-link-rel'] ? html`<span class="link-rel">${pathConfig['x-link-rel']}</span>` : ''}
+    ${pathItem['x-resource-name'] ? pathItem['x-resource-name'] : path}
+    ${pathItem['x-link-rel'] ? html`<span class="link-rel">${pathItem['x-link-rel']}</span>` : ''}
   </a>
 </li>`
 
