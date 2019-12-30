@@ -14,7 +14,7 @@ export const apiSpec = spec => html`
       ${apiContentNavigation({ spec })}
 
       <at-content-container>
-        ${apiSpecHeader({ info: spec.info })}
+        ${apiSpecHeader({ info: spec.info, externalDocs: spec.externalDocs })}
         ${Object.entries(spec.paths).map(([pathName, path]) => apiSpecPath({ spec, pathName, path }))}
         ${apiSpecFooter({ info: spec.info })}
       </at-content-container>

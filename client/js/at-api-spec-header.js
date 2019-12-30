@@ -8,12 +8,19 @@ const licenseTemplate = license => license.url
   ? html`License: ${link(license.name, license.url)}`
   : html`${license.name}`
 
-const template = ({ title, description, termsOfService, contact, license, version }) => html`
+const externalDocsTemplate = externalDocs => html`<div class="external-docs">
+  <a href="${externalDocs.url}" rel="noopener noreferrer" target="_blank">
+    ${externalDocs.description || externalDocs.url}
+  </a>
+</div>`
+
+const template = ({ title, description, termsOfService, contact, license, version, externalDocs }) => html`
   <header>
     <h1>${title}</h1>
     <div class="meta-info">
       ${license ? licenseTemplate(license) : ''}
       ${version ? `Version: ${version}` : ''}
+      ${externalDocs ? externalDocsTemplate(externalDocs) : ''}
     </div>
 
     ${description ? descriptionTemplate(description) : ''}
@@ -21,9 +28,10 @@ const template = ({ title, description, termsOfService, contact, license, versio
   </header>`
 
 class ApiSpecHeader extends HTMLElement {
-  constructor ({ info } = {}) {
+  constructor ({ info, externalDocs } = {}) {
     super()
     this.info = info
+    this.externalDocs = externalDocs
   }
 
   connectedCallback () {
@@ -31,7 +39,7 @@ class ApiSpecHeader extends HTMLElement {
   }
 
   render () {
-    render(template({ ...this.info }), this)
+    render(template({ externalDocs: this.externalDocs, ...this.info }), this)
   }
 
   get title () {

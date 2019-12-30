@@ -21,4 +21,12 @@ describe('spec header for example-spec', () => {
       .contains('MIT')
       .should('have.attr', 'href', 'https://opensource.org/licenses/MIT')
   })
+
+  it('should display a link to external documents if given', () => {
+    cy.visit('/?spec=example-specs/petstore-example.3.0.json')
+
+    cy.get('at-api-spec-header .external-docs a')
+      .contains('External Document')
+      .should('have.attr', 'href', 'http://some-external-link')
+  })
 })
