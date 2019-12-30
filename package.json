@@ -23,7 +23,7 @@
     "marked": "^0.8.0",
     "pug": "^2.0.4",
     "sass": "^1.24.0",
-    "skeme": "file:../skeme",
+    "skeme": "^1.0.1",
     "transliteration": "^2.1.8"
   },
   "devDependencies": {

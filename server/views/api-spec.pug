@@ -1,37 +1,13 @@
 extend layouts/base
 
 block content
+  at-error-event-handler
 
-  at-content-wrapper
-    at-content-row
-      at-content-navigation
-        nav
-          h3.nav-headline Resources
-          ul
-
-            li
-              a(href="#")
-                | Dog
-                span.link-rel pet:dog
-
-            li
-              a(href="#")
-                | Dog Food
-                span.link-rel pet:dog-food
-
-            li
-              a(href="#")
-                | Dog School
-                span.link-rel pet:dog-school
-
-      at-content-container
-        at-error-event-handler
-
-        if spec
-          at-api-spec(spec=spec)
-            .message
-              | APITown
-              = " "
-              = spec
-        else
-          p No Spec has been provided. Please provide a valid `spec` query parameter.
+  if spec
+    at-api-spec(spec=spec)
+      .message
+        | APITown
+        = " "
+        = spec
+  else
+    p No Spec has been provided. Please provide a valid `spec` query parameter.

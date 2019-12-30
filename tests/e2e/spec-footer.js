@@ -1,6 +1,6 @@
 /* global describe, it, cy */
 
-describe('open spec viewer with example spec', () => {
+describe('spec footer for example-spec', () => {
   it('should render contact information in the footer', () => {
     cy.visit('/?spec=example-specs/petstore-example.3.0.json')
 

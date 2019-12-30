@@ -6,11 +6,20 @@ import skema from '../../vendor/skeme/index.js'
 import { apiSpecHeader } from './at-api-spec-header.js'
 import { apiSpecFooter } from './at-api-spec-footer.js'
 import { apiSpecPath } from './at-api-spec-path.js'
+import { apiContentNavigation } from './at-content-navigation.js'
 
 export const apiSpec = spec => html`
-  ${apiSpecHeader({ info: spec.info })}
-  ${Object.entries(spec.paths).map(([pathName, path]) => apiSpecPath({ spec, pathName, path }))}
-  ${apiSpecFooter({ info: spec.info })}
+  <at-content-wrapper>
+    <at-content-row>
+      ${apiContentNavigation({ spec })}
+
+      <at-content-container>
+        ${apiSpecHeader({ info: spec.info })}
+        ${Object.entries(spec.paths).map(([pathName, path]) => apiSpecPath({ spec, pathName, path }))}
+        ${apiSpecFooter({ info: spec.info })}
+      </at-content-container>
+    </at-content-row>
+  </at-content-wrapper>
 `
 
 class ATApiSpec extends HTMLElement {

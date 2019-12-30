@@ -15,7 +15,7 @@ class ApiSpecPath extends HTMLElement {
   }
 
   connectedCallback () {
-    console.log(this.pathName, this.pathSlug)
+    // console.log(this.pathName, this.pathSlug)
   }
 
   render () {
