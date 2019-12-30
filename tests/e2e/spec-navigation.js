@@ -1,6 +1,13 @@
 /* global describe, it, cy */
 
 describe('content-navigation for example-spec', () => {
+  it('should render the headline of the nav menu', () => {
+    cy.visit('/?spec=example-specs/petstore-example.3.0.json')
+
+    cy.get('at-content-navigation h3')
+      .contains('Resources')
+  })
+
   it('should render all resources as nav entries', () => {
     cy.visit('/?spec=example-specs/petstore-example.3.0.json')
 
