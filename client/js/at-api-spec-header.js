@@ -2,13 +2,17 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { richText, link } from './helpers/rendering.js'
 
-const descriptionTemplate = description => html`<p>${richText(description)}</p>`
+const descriptionTemplate = description => html`${richText(description)}`
+
+const licenseTemplate = license => license.url
+  ? html`License: ${link(license.name, license.url)}`
+  : html`${license.name}`
 
 const template = ({ title, description, termsOfService, contact, license, version }) => html`
   <header>
     <h1>${title}</h1>
     <div class="meta-info">
-      ${license ? html`License: ${link(license.name, license.url)}` : ''}
+      ${license ? licenseTemplate(license) : ''}
       ${version ? `Version: ${version}` : ''}
     </div>
 

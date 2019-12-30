@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://localhost:5002",
+  "integrationFolder": "tests/e2e",
+  "watchForFileChanges": true
+}

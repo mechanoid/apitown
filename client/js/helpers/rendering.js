@@ -4,4 +4,4 @@ import marked from '../../../vendor/marked/lib/marked.esm.js'
 
 export const richText = text => unsafeHTML(marked(text))
 
-export const link = (label, href) => html`<a href="${href}">${label}</a>`
+export const link = (labelOrLink, href) => href ? html`<a href="${href}">${labelOrLink}</a>` : html`<a href="${labelOrLink}">${labelOrLink}</a>`

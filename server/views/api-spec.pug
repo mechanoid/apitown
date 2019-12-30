@@ -6,7 +6,7 @@ block content
     at-content-row
       at-content-navigation
         nav
-          p.nav-headline Resources
+          h3.nav-headline Resources
           ul
 
             li
@@ -25,6 +25,8 @@ block content
                 span.link-rel pet:dog-school
 
       at-content-container
+        at-error-event-handler
+
         if spec
           at-api-spec(spec=spec)
             .message

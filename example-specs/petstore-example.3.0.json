@@ -10,7 +10,8 @@
       "email": "info@example-organization.com"
     },
     "license": {
-      "name": "MIT"
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     }
   },
   "servers": [

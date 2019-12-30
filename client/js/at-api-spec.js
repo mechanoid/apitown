@@ -1,5 +1,7 @@
-/* global customElements, HTMLElement */
+/* global customElements, HTMLElement, CustomEvent */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
+import './at-error-event-handler.js'
+
 import skema from '../../vendor/skeme/index.js'
 import { apiSpecHeader } from './at-api-spec-header.js'
 import { apiSpecFooter } from './at-api-spec-footer.js'
@@ -13,8 +15,13 @@ export const apiSpec = spec => html`
 
 class ATApiSpec extends HTMLElement {
   async connectedCallback () {
-    this.spec = await skema(this.apiSpec)
-    this.render()
+    try {
+      this.spec = await skema(this.apiSpec)
+      this.render()
+    } catch (e) {
+      const errorEvent = new CustomEvent('at-error', { bubbles: true, detail: e })
+      this.dispatchEvent(errorEvent)
+    }
   }
 
   render () {
