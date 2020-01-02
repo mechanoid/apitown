@@ -4,10 +4,10 @@ describe('spec header for example-spec', () => {
   it('should render all descriptions for the spec', () => {
     cy.visit('/?spec=example-specs/petstore-example.3.0.json')
 
-    cy.get('at-api-spec-header header > h1')
+    cy.get('at-api-spec-header header h1')
       .contains('Swagger Petstore')
 
-    cy.get('at-api-spec-header header > p')
+    cy.get('at-api-spec-header header div p')
       .contains('A little, very basic, OpenAPI example, describing a petstore API')
   })
 
