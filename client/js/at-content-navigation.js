@@ -12,10 +12,16 @@ const pathLinkTemplate = ([path, pathItem]) => html`<li>
   </a>
 </li>`
 
-const template = ({ paths }) => html`
+const template = ({ paths, spec }) => html`
   <nav>
     <h3 class="nav-headline">Resources</h3>
-    <ul>${paths.map(pathLinkTemplate)}</ul>
+    <ul>
+      ${paths.map(pathLinkTemplate)}
+    </ul>
+
+    <ul>
+      ${spec.info.contact ? html`<li><a href="#spec-contact">Contact</a></li>` : ''}
+    </ul>
   </nav>
 `
 
@@ -39,7 +45,7 @@ class ApiContentNavigation extends HTMLElement {
   }
 
   render () {
-    render(template({ paths: this.paths }), this)
+    render(template({ paths: this.paths, spec: this.spec }), this)
   }
 }
 

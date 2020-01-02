@@ -4,6 +4,7 @@ import { link } from './helpers/rendering.js'
 
 const contactTemplate = ({ name, url, email }) => html`
   <address class="card">
+    <a name="spec-contact"></a>
     <h3>Contact</h3>
     ${name}
     ${url ? link(url) : ''}

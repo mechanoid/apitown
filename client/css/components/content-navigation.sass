@@ -22,9 +22,9 @@ at-content-navigation
     list-style-type: none
     padding-left: 0
     padding-bottom: 1rem
-
-    @include media-breakpoint-up(md)
-      border-bottom: 1px solid $nav-link-hover-back-color
+    border-bottom: 1px solid $nav-link-hover-back-color
+    &:last-of-type
+      border-bottom: none
 
   li
     margin-bottom: .5rem
