@@ -29,6 +29,19 @@
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "x-resource-name": "Pet Collection",
       "x-link-rel": "ps:pet-list",
+      "parameters": [
+        {
+          "name": "X-Example-Header",
+          "in": "header",
+          "description": "showing a parameter, valid for all Verbs/Operations",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "example": 42
+        }
+      ],
       "get": {
         "summary": "List all pets",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
@@ -41,6 +54,17 @@
             "name": "limit",
             "in": "query",
             "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 4
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "page number",
             "required": false,
             "schema": {
               "type": "integer",

@@ -3,21 +3,32 @@ import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { richText } from './helpers/rendering.js'
 import { slug, pathID } from './helpers/path-item-helper.js'
 import { apiSpecOperation } from './at-api-spec-operation.js'
+import { apiSpecParameters } from './at-api-spec-parameters.js'
 
 const operations = ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH', 'TRACE'].map(operation => operation.toLowerCase())
+
+const parametersTemplate = parameters => html`
+  <h3 title="valid for all operations">Request Parameters</h3>
+  ${apiSpecParameters({ parameters })}
+`
 
 const template = ({ path, pathItem }) => html`
   <header>
     <a name="${slug(path, pathItem)}"></a>
     <h2>${pathID(path, pathItem)}</h2>
+
     <dl class="path-info">
       <dt>Path:</dt> <dd><code>${path}</code></dd>
       ${pathItem['x-link-rel'] ? html`<dt>Link-Rel:</dt> <dd><code>${pathItem['x-link-rel']}</code></dd>` : ''}
       ${pathItem.operationId ? html`<dt>Operation-Id:</dt> <dd>${pathItem.operationId}</dd>` : ''}
     </dl>
+
     ${pathItem.summary ? html`<p class="summary">${pathItem.summary}</p>` : ''}
     ${pathItem.description ? html`<div class="description">${richText(pathItem.description)}</div>` : ''}
   </header>
+
+  ${pathItem.parameters ? parametersTemplate(pathItem.parameters) : ''}
+
   ${Object.keys(pathItem)
     .filter(key => operations.indexOf(key) >= 0)
     .map(operationName =>
