@@ -11,12 +11,12 @@ const externalDocsTemplate = externalDocs => html`<div class="external-docs">
 
 const parametersTemplate = ({ parameters }) => html`
   <h4>Request Parameters</h4>
-  ${apiSpecParameters({ parameters, headlineLevel: 5 })}
+  ${apiSpecParameters({ parameters })}
 `
 
 const template = ({ operationName, operation }) => html`
   <header>
-    <h3>${operationName}</h3>
+    <h3 class="operation-headline">${operationName}</h3>
     ${operation.summary ? html`<p class="summary">${operation.summary}</p>` : ''}
     ${operation.description ? html`<div class="description">${richText(operation.description)}</div>` : ''}
     ${operation.externalDocs ? externalDocsTemplate(operation.externalDocs) : ''}

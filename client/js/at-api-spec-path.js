@@ -8,7 +8,8 @@ import { apiSpecParameters } from './at-api-spec-parameters.js'
 const operations = ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH', 'TRACE'].map(operation => operation.toLowerCase())
 
 const parametersTemplate = parameters => html`
-  <h3 title="valid for all operations">Request Parameters</h3>
+  <h3 title="valid for all operations" class="operation-headline">All Operations</h3>
+  <h4>Request Parameters</h4>
   ${apiSpecParameters({ parameters })}
 `
 

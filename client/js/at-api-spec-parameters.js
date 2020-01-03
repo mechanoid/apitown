@@ -1,6 +1,5 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
-import { dynamicHeadline } from './helpers/text-helper.js'
 
 const parameterTemplate = parameter => html`<tr>
   <td class="param-name">${parameter.name}</td>
@@ -11,22 +10,21 @@ const parameterTemplate = parameter => html`<tr>
   </td>
 </tr>`
 
-const parameterGroupTemplate = (parameterType, parameters, headlineLevel) => html`
-  ${dynamicHeadline(parameterType, headlineLevel)}
+const parameterGroupTemplate = (parameterType, parameters) => html`
+  <h5>${parameterType}</h5>
   <table class="table">
     ${parameters.map(parameterTemplate)}
   </table>
 `
 
-const template = ({ parameters, headlineLevel }) => html`
-  ${Object.keys(parameters).map(parameterType => parameterGroupTemplate(parameterType, parameters[parameterType], headlineLevel))}
+const template = ({ parameters }) => html`
+  ${Object.keys(parameters).map(parameterType => parameterGroupTemplate(parameterType, parameters[parameterType]))}
 `
 
 class ApiSpecParameters extends HTMLElement {
-  constructor ({ parameters, headlineLevel = 4 } = {}) {
+  constructor ({ parameters } = {}) {
     super()
     this.parameters = parameters
-    this.headlineLevel = headlineLevel
 
     this.groupedParameters = ['header', 'path', 'query', 'cookie']
       .reduce((result, location) => {
@@ -45,7 +43,7 @@ class ApiSpecParameters extends HTMLElement {
   }
 
   render () {
-    render(template({ parameters: this.groupedParameters, headlineLevel: this.headlineLevel }), this)
+    render(template({ parameters: this.groupedParameters }), this)
   }
 }
 
