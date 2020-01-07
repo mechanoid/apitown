@@ -14,6 +14,7 @@ at-api-media-type-object
     color: #fff
 
   .schema, .example
+    overflow: hidden
     padding: 1rem
     font-size: .875rem
     position: relative
@@ -41,3 +42,8 @@ at-api-media-type-object
     &:before
       content: 'Example'
       color: #212B42
+
+    &.empty
+      background-color: #2f3649
+      &:before
+        color: #3F4A63

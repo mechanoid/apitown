@@ -12,6 +12,9 @@ at-api-spec-parameters
   display: block
   margin-bottom: 2rem
 
+  h5
+    margin-bottom: 1rem
+
   h4, h5, h6
     &:before, &:after
       color: #d2d5da
@@ -21,8 +24,8 @@ at-api-spec-parameters
     &:after
       content: ' >'
 
-  .param-name
-    font-weight: bold
+tr.required
+  border-left: 3px solid #D3523C
 
-  tr.required
-    border-left: 3px solid #D3523C
+.param-name
+  font-weight: bold

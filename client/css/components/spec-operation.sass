@@ -1,9 +1,37 @@
 at-api-spec-operation
   display: block
   margin-bottom: 2rem
+  position: relative
 
   & > header
     margin-bottom: 1rem
 
     .summary
       font-style: italic
+
+  &:after
+    content: attr(operation-name)
+    // content: 'hello world'
+    position: absolute
+    color: #fff
+    z-index: 1000
+    top: 50%
+    left: -1.5rem
+    text-transform: uppercase
+    transform: translateX(-50%) rotate(-90deg)
+    font-weight: bold
+    font-size: .75rem
+
+  &:before
+    content: ''
+    width: 1rem
+    background-color: rgb(157, 157, 157)
+    position: absolute
+    left: -2rem
+    top: 0
+    bottom: 0
+    z-index: 999
+    opacity: .5
+
+  &:nth-child(even):before
+    background-color: rgb(78, 78, 78)

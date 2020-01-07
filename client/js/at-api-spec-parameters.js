@@ -7,7 +7,7 @@ const simpleSchema = schema => html`${schema.type ? `${schema.type} ` : ''}${sch
 
 // TODO: render style (http://spec.openapis.org/oas/v3.0.2#style-values)
 // TODO: render explode
-const parameterTemplate = parameter => html`<tr class="${parameter.required ? 'required' : ''}">
+export const parameterTemplate = parameter => html`<tr class="${parameter.required ? 'required' : ''}">
   <td class="param-name">${parameter.name}</td>
   <td>${parameter.schema ? simpleSchema(parameter.schema) : ''}</td>
   <td>${parameter.description}</td>
