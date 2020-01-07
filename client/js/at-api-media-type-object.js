@@ -1,4 +1,4 @@
-/* global customElements, HTMLElement, hljs */
+/* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 // import { link } from './helpers/rendering.js'
 
@@ -6,6 +6,7 @@ const code = snippet => html`<pre class="pre-scrollable"><code class="json">${JS
 
 const codeWithHeadline = (headline, snippet) => html`<h6>${headline}</h6><code class="json">${JSON.stringify(snippet, null, 2)}</code>`
 
+// TODO: improve example rendering (other formats? external values? etc.)
 const template = ({ mediaType, mediaTypeObject }) => html`
   <h5>${mediaType}</h5>
   <div class="container-fluid no-gutters">
@@ -29,8 +30,6 @@ class ApiMediaTypeObject extends HTMLElement {
 
   connectedCallback () {
     this.render()
-    const codeBlocks = this.querySelectorAll('code')
-    codeBlocks.forEach(block => hljs.highlightBlock(block))
   }
 
   render () {
