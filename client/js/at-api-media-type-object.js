@@ -1,10 +1,10 @@
-/* global customElements, HTMLElement */
+/* global customElements, HTMLElement, hljs */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 // import { link } from './helpers/rendering.js'
 
-const code = snippet => html`<pre class="pre-scrollable"><code>${JSON.stringify(snippet, null, 2)}</code></pre>`
+const code = snippet => html`<pre class="pre-scrollable"><code class="json">${JSON.stringify(snippet, null, 2)}</code></pre>`
 
-const codeWithHeadline = (headline, snippet) => html`<h6>${headline}</h6><code>${JSON.stringify(snippet, null, 2)}</code>`
+const codeWithHeadline = (headline, snippet) => html`<h6>${headline}</h6><code class="json">${JSON.stringify(snippet, null, 2)}</code>`
 
 const template = ({ mediaType, mediaTypeObject }) => html`
   <h5>${mediaType}</h5>
@@ -29,6 +29,8 @@ class ApiMediaTypeObject extends HTMLElement {
 
   connectedCallback () {
     this.render()
+    const codeBlocks = this.querySelectorAll('code')
+    codeBlocks.forEach(block => hljs.highlightBlock(block))
   }
 
   render () {

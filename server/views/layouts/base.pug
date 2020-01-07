@@ -4,10 +4,13 @@ html(lang="en" dir="ltr")
     meta(charset='utf-8')
     title APITown
 
+    link(rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/nord.min.css")
     link(rel="stylesheet" href=assets.vendor.mainCSS.publicPath)
+
 
     //- usually appended / prepended, but can be replaced
     block scripts
+      script(src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js")
       script(type="module" src=assets.vendor.jsYaml.publicPath)
       script(type="module" src=assets.app('js/at-api-spec.js'))
 
