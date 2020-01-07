@@ -1,0 +1,43 @@
+at-api-media-type-object
+  display: block
+  margin-right: -1rem
+  margin-left: -1rem
+
+  h5
+    margin: 1rem
+
+  h6
+    color: #fff
+
+
+  code
+    color: #fff
+
+  .schema, .example
+    padding: 1rem
+    font-size: .875rem
+    position: relative
+    min-height: 4rem
+
+    &:before
+      display: block
+      content: ''
+      position: absolute
+      right: 1rem
+      bottom: 1rem
+
+      font-weight: bold
+      z-index: 999
+
+  .schema
+    background-color: #212B42
+    &:before
+      content: 'Schema'
+      color: #3F4A63
+    code
+      color: #fff
+  .example
+    background-color: #3F4A63
+    &:before
+      content: 'Example'
+      color: #212B42

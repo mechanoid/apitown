@@ -2,6 +2,7 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { richText } from './helpers/rendering.js'
 import { apiSpecParameters } from './at-api-spec-parameters.js'
+import { apiRequestBodyObject } from './at-api-request-body-object.js'
 
 const externalDocsTemplate = externalDocs => html`<div class="external-docs">
   <a href="${externalDocs.url}" rel="noopener noreferrer" target="_blank">
@@ -23,6 +24,7 @@ const template = ({ operationName, operation }) => html`
   </header>
 
   ${operation.parameters ? parametersTemplate({ parameters: operation.parameters }) : ''}
+  ${operation.requestBody ? apiRequestBodyObject({ requestBody: operation.requestBody }) : ''}
 `
 
 class ApiSpecOperation extends HTMLElement {
