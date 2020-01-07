@@ -1,0 +1,19 @@
+at-toggle-tip
+  position: relative
+  display: inline-block
+
+  [role=status]
+    display: none
+
+  &.active [role=status]
+    display: inline-block
+    position: absolute
+    left: 50%
+    top: 110%
+    width: 20rem
+    padding: 0.5rem
+    background: #413f70
+    color: #fff
+    transform: translateX(-50%)
+    border-radius: 3px
+    font-size: .875rem

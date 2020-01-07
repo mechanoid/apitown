@@ -54,7 +54,18 @@
             "name": "limit",
             "in": "query",
             "description": "How many items to return at one time (max 100)",
-            "required": false,
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 4
+          },
+          {
+            "name": "limitty",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -70,7 +81,9 @@
               "type": "integer",
               "format": "int32"
             },
-            "example": 4
+            "example": 4,
+            "allowReserved": true,
+            "deprecated": true
           }
         ],
         "requestBody": {
