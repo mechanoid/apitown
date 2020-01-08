@@ -14,7 +14,7 @@ const template = ({ mediaType, mediaTypeObject, hasExamples } = {}) => html`
     <div class="row">
       <div class="col-md-${hasExamples ? 6 : 11} schema">${mediaTypeObject.schema ? code(mediaTypeObject.schema) : ''}</div>
       <div class="col-md-${hasExamples ? 6 : 1} example ${hasExamples ? '' : 'empty'}">${mediaTypeObject.examples
-        ? html`<pre class="pre-scrollable">${Object.keys(mediaTypeObject.examples).map(exampleName => codeWithHeadline(exampleName, mediaTypeObject.examples[exampleName]))}</pre>`
+        ? html`<pre class="pre-scrollable">${Object.entries(mediaTypeObject.examples).map(([exampleName, examples]) => codeWithHeadline(exampleName, examples))}</pre>`
         : code(mediaTypeObject.example)
         }</div>
     </div>

@@ -30,7 +30,7 @@ const parameterGroupTemplate = (parameterType, parameters) => html`
 `
 
 const template = ({ parameters }) => html`
-  ${Object.keys(parameters).map(parameterType => parameterGroupTemplate(parameterType, parameters[parameterType]))}
+  ${Object.entries(parameters).map(([parameterType, parameter]) => parameterGroupTemplate(parameterType, parameter))}
 `
 
 class ApiSpecParameters extends HTMLElement {

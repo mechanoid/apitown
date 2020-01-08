@@ -8,8 +8,7 @@ import { apiMediaTypeObject } from './at-api-media-type-object.js'
 const headersTemplate = headers => html`
 <h6>Response Headers</h6>
 <table class="table">
-  ${Object.keys(headers).map(headerName => {
-    const headerParameter = headers[headerName]
+  ${Object.entries(headers).map(([headerName, headerParameter]) => {
     headerParameter.name = headerName // response headers align to the parameter structure, but name is set to the headerName provided as key
     return parameterTemplate(headerParameter)
   })}
@@ -19,7 +18,7 @@ const template = ({ responseCode, response }) => html`
   <h5>${responseCode}</h5>
   ${response.description ? html`<div class="description">${richText(response.description)}</div>` : ''}
   ${response.headers ? headersTemplate(response.headers) : ''}
-  ${response.content ? Object.keys(response.content).map(mediaType => apiMediaTypeObject({ mediaType, mediaTypeObject: response.content[mediaType] })) : ''}
+  ${response.content ? Object.entries(response.content).map(([mediaType, mediaTypeObject]) => apiMediaTypeObject({ mediaType, mediaTypeObject })) : ''}
 `
 
 class ApiResponseObject extends HTMLElement {

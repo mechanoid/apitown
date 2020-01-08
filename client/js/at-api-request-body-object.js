@@ -12,7 +12,7 @@ const template = ({ description, content, required } = {}) => html`
   </h4>
 
   ${description ? html`<div class="description">${richText(description)}</div>` : ''}
-  ${content ? Object.keys(content).map(mediaType => apiMediaTypeObject({ mediaType, mediaTypeObject: content[mediaType] })) : ''}
+  ${content ? Object.entries(content).map(([mediaType, mediaTypeObject]) => apiMediaTypeObject({ mediaType, mediaTypeObject })) : ''}
 `
 
 class ApiRequestBodyObject extends HTMLElement {

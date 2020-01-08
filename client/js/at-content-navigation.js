@@ -40,7 +40,7 @@ class ApiContentNavigation extends HTMLElement {
       return this._paths
     }
 
-    this._paths = Object.keys(this.spec.paths).map(path => [path, this.spec.paths[path]])
+    this._paths = Object.entries(this.spec.paths)
     return this._paths
   }
 
