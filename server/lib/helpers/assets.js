@@ -1,6 +1,9 @@
-import path from 'path'
+import { fileURLToPath } from 'url';
+import { resolve, dirname } from 'path'
 import express from 'express'
 import chalk from 'chalk'
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * serves static files from node_modules on a public prefix path.
@@ -11,7 +14,7 @@ export const provideAsset = (assetPath, { app, prefix = '/vendor', root = 'node_
   const publicPath = assetPath.replace(new RegExp(`^/?${root}(/.*)$`), `${prefix}$1`)
 
   try {
-    const fullAssetPath = path.resolve(process.cwd(), assetPath)
+    const fullAssetPath = resolve(__dirname, '../../..', assetPath)
     console.info(`providing "${chalk.yellow(assetPath)}" as "${chalk.yellow(publicPath)}"`)
 
     app.use(publicPath, express.static(fullAssetPath))

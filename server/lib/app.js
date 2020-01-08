@@ -1,9 +1,12 @@
-import { join, resolve } from 'path'
+import { fileURLToPath } from 'url';
+import { join, resolve, dirname } from 'path'
 import express from 'express'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import 'pug'
 import { provideAsset } from './helpers/assets.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default ({ serveStatic } = {}) => {
   console.info('')
@@ -11,11 +14,11 @@ export default ({ serveStatic } = {}) => {
   const app = express()
   app.use(morgan('combined'))
   app.set('view engine', 'pug')
-  app.set('views', 'server/views')
+  app.set('views', resolve(__dirname, '../views'))
 
   const appAssetPath = '/assets/app'
   console.info(`serve ${chalk.yellow(appAssetPath)}`)
-  app.use(appAssetPath, express.static('./client'))
+  app.use(appAssetPath, express.static(resolve(__dirname, '../../client')))
 
   const mainCSS = provideAsset('dist/css/main.css', { app, root: 'dist', prefix: '/assets' })
   const jsYaml = provideAsset('node_modules/js-yaml/dist/js-yaml.min.js', { app, root: 'node_modules', prefix: '/assets/vendor' })
