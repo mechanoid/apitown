@@ -5,12 +5,16 @@ import chalk from 'chalk'
 import app from '../server/index.js'
 
 const args = arg({
-  '--serve': [String]
+  '--serve': [String],
+  '--port': Number,
+
+  // aliases
+  '-p': '--port'
 })
 
 const server = app({
   serveStatic: args['--serve'] || []
-}).listen(process.env.PORT, () => {
+}).listen(args['--port'] || process.env.PORT, () => {
   console.info(`
 server started, and listens to: ${chalk.yellow(server.address().port)}`)
 })
