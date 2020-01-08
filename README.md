@@ -6,6 +6,18 @@ Focussing on a resource-centric visualisation the viewer allows to link directly
 It optionally interprets additional API extensions and uses them to bring your API closer
 to a documentation for your REST API.
 
+## Usage
+
+```
+npm install apitown
+npx apitown --serve ./example-specs/:/example-specs --serve ./some-other-specs/:/other-specs  --port 5002
+```
+
+## CLI Options
+
+* `--port`, `-p` : port of the serving application
+* `--serve` : provided in the format of `fileOrFolder:mountPath`. A static folder or file will be served at `mountPath`. Multiple folders can be served by providing multiple occurances of `--serve`.
+
 ## Features
 
 * Grouping the API Documentation by Resources (OpenAPI paths)
