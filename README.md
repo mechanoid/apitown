@@ -6,11 +6,19 @@ Focussing on a resource-centric visualisation the viewer allows to link directly
 It optionally interprets additional API extensions and uses them to bring your API closer
 to a documentation for your REST API.
 
+Implemented for OpenAPI 3
+
 ## Usage
 
 ```
 npm install apitown
 npx apitown --serve ./example-specs/:/example-specs --serve ./some-other-specs/:/other-specs  --port 5002
+```
+
+Go to the served APITown instance and provide a path to an OpenAPI spec
+
+```
+open http://localhost:5002/example-specs/petstore-example.3.0.json
 ```
 
 ## CLI Options
