@@ -1,13 +1,14 @@
 import path from 'path'
 import express from 'express'
 import chalk from 'chalk'
+import morgan from 'morgan'
 import 'pug'
 import { provideAsset } from './helpers/assets.js'
 
 console.info('')
 
 const app = express()
-
+app.use(morgan('combined'))
 app.set('view engine', 'pug')
 app.set('views', 'server/views')
 
@@ -36,6 +37,6 @@ app.locals.assets.vendor = { mainCSS, jsYaml } // make assetPaths availabel in v
 
 const exampleSpecPath = '/example-specs'
 console.info(`serve ${chalk.yellow(exampleSpecPath)}`)
-app.use(exampleSpecPath, express.static('./example-specs'))
+app.use(exampleSpecPath, express.static(path.resolve('./example-specs')))
 
 export default app

@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "apitown": "./bin/apitown.js"
+  },
   "scripts": {
     "build:css": "sass client/css/main.sass dist/css/main.css",
     "watch:css": "npm run build:css && npm run build:css -- --watch",
@@ -22,6 +25,7 @@
     "js-yaml": "^3.13.1",
     "lit-html": "^1.1.2",
     "marked": "^0.8.0",
+    "morgan": "^1.9.1",
     "pug": "^2.0.4",
     "sass": "^1.24.0",
     "skeme": "^1.0.1",
