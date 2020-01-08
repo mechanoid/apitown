@@ -6,9 +6,11 @@ import { apiMediaTypeObject } from './at-api-media-type-object.js'
 const template = ({ description, content, required } = {}) => html`
   <h4>
     Request Body
+    <span class="required-hint">
+      ${required ? html`<strong>(required)</strong>` : ''}
+    </span>
   </h4>
 
-  ${required ? html`<strong>(required)</strong>` : ''}
   ${description ? html`<div class="description">${richText(description)}</div>` : ''}
   ${content ? Object.keys(content).map(mediaType => apiMediaTypeObject({ mediaType, mediaTypeObject: content[mediaType] })) : ''}
 `
