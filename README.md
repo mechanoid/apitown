@@ -24,7 +24,7 @@ APITown provides additionally a Resource Name, that is used to give a resource a
 The Id of a Resource is build from Link Relation, if given, Resource-Name if no Link Relation is given, and in case
 both is missing, from the path.
 
-The Resource Id can be used to target a resource via adding the [Resource Id]() as Anchor to the Viewer URL.
+The Resource Id can be used to target a resource via adding the [Resource Id](#resource-id) as Anchor to the Viewer URL.
 
 ```
 http://localhost:5002/?spec=example-specs/petstore-example.3.0.json#{resource-id} // provided APITown runs on localhost
