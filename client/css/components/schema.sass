@@ -1,3 +1,23 @@
 at-schema
   display: block
   padding-top: 3rem
+
+.components, .paths
+  display: block
+  padding-top: 4rem
+  position: relative
+
+  &:before
+    display: block
+    position: absolute
+    top: .5rem
+    left: 1rem
+    font-size: 2rem
+    font-weight: bold
+    color: rgb(195, 191, 191)
+
+.components:before
+  content: 'Components'
+
+.paths:before
+  content: 'Paths'

@@ -9,6 +9,16 @@ import { apiSpecPath } from './at-api-spec-path.js'
 import { apiSpecComponentCategory } from './at-api-spec-component-category.js'
 import { apiContentNavigation } from './at-content-navigation.js'
 
+const pathsFrame = spec => html`<section class="paths">
+  <a name="paths"></a>
+  ${Object.entries(spec.paths).map(([path, pathItem]) => apiSpecPath({ spec, path, pathItem }))}
+</section>`
+
+const componentsFrame = components => html`<section class="components">
+  <a name="components"></a>
+  ${components ? Object.entries(components).map(([componentCategory, components]) => apiSpecComponentCategory({ componentCategory, components })) : ''}
+</section>`
+
 export const apiSpec = spec => html`
   <at-content-wrapper>
     <at-content-row>
@@ -16,8 +26,8 @@ export const apiSpec = spec => html`
 
       <at-content-container>
         ${apiSpecHeader({ info: spec.info, externalDocs: spec.externalDocs })}
-        ${Object.entries(spec.paths).map(([path, pathItem]) => apiSpecPath({ spec, path, pathItem }))}
-        ${spec.components ? Object.entries(spec.components).map(([componentCategory, components]) => apiSpecComponentCategory({ componentCategory, components })) : ''}
+        ${pathsFrame(spec)}
+        ${spec.components ? componentsFrame(spec.components) : ''}
         ${apiSpecFooter({ info: spec.info })}
       </at-content-container>
     </at-content-row>
