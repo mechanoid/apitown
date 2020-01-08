@@ -23,7 +23,11 @@ const componentRendererByCategory = {
     <h3>${componentName}</h3>
     ${apiRequestBodyObject({ requestBody: component, headline: false })}
   `,
-  headers: () => {},
+  headers: (componentName, component) => html`
+    <h3>${componentName}</h3>
+    ${parameterGroupTemplate('', [Object.assign({}, component, { name: 'EXAMPLE_HEADER_NAME' })], false)}
+  `,
+  // TODO: those are not yet implemented. Handle them at least with a message
   securitySchemes: () => {},
   links: () => {},
   linkscallbacks: () => {}
