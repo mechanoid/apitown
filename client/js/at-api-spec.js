@@ -6,6 +6,7 @@ import skema from '../../vendor/skeme/index.js'
 import { apiSpecHeader } from './at-api-spec-header.js'
 import { apiSpecFooter } from './at-api-spec-footer.js'
 import { apiSpecPath } from './at-api-spec-path.js'
+import { apiSpecComponentCategory } from './at-api-spec-component-category.js'
 import { apiContentNavigation } from './at-content-navigation.js'
 
 export const apiSpec = spec => html`
@@ -16,6 +17,7 @@ export const apiSpec = spec => html`
       <at-content-container>
         ${apiSpecHeader({ info: spec.info, externalDocs: spec.externalDocs })}
         ${Object.entries(spec.paths).map(([path, pathItem]) => apiSpecPath({ spec, path, pathItem }))}
+        ${spec.components ? Object.entries(spec.components).map(([componentCategory, components]) => apiSpecComponentCategory({ componentCategory, components })) : ''}
         ${apiSpecFooter({ info: spec.info })}
       </at-content-container>
     </at-content-row>
