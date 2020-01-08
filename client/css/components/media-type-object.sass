@@ -10,40 +10,40 @@ at-api-media-type-object
     color: #fff
 
 
+code
+  color: #fff
+
+.schema, .example
+  overflow: hidden
+  padding: 1rem
+  font-size: .875rem
+  position: relative
+  min-height: 4rem
+
+  &:before
+    display: block
+    content: ''
+    position: absolute
+    right: 1rem
+    bottom: 1rem
+
+    font-weight: bold
+    z-index: 999
+
+.schema
+  background-color: #212B42
+  &:before
+    content: 'Schema'
+    color: #3F4A63
   code
     color: #fff
+.example
+  background-color: #3F4A63
+  &:before
+    content: 'Example'
+    color: #212B42
 
-  .schema, .example
-    overflow: hidden
-    padding: 1rem
-    font-size: .875rem
-    position: relative
-    min-height: 4rem
-
+  &.empty
+    background-color: #2f3649
     &:before
-      display: block
-      content: ''
-      position: absolute
-      right: 1rem
-      bottom: 1rem
-
-      font-weight: bold
-      z-index: 999
-
-  .schema
-    background-color: #212B42
-    &:before
-      content: 'Schema'
       color: #3F4A63
-    code
-      color: #fff
-  .example
-    background-color: #3F4A63
-    &:before
-      content: 'Example'
-      color: #212B42
-
-    &.empty
-      background-color: #2f3649
-      &:before
-        color: #3F4A63

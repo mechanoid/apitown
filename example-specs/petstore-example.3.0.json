@@ -123,8 +123,7 @@
               },
               "examples": {
                   "user" : {
-                    "summary": "Pet example in XML",
-                    "externalValue": "http://foo.bar/examples/user-example.xml"
+                    "$ref": "#/components/schemas/PetXML"
                   }
                 }
             }
@@ -154,6 +153,19 @@
     }
   },
   "components": {
+    "examples": {
+      "PetXML": {
+        "summary": "Pet example in XML",
+        "externalValue": "http://foo.bar/examples/user-example.xml"
+      },
+      "PetJSON": {
+        "summary": "Pet example in XML",
+        "value": {
+          "summary": "Pet Example",
+          "externalValue": "http://foo.bar/examples/user-example.json"
+        }
+      }
+    },
     "responses": {
       "PetList": {
         "description": "A paged array of pets",

@@ -1,10 +1,18 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
-// import { link } from './helpers/rendering.js'
+import { richText } from './helpers/rendering.js'
 
-const code = snippet => html`<pre class="pre-scrollable"><code class="json">${JSON.stringify(snippet, null, 2)}</code></pre>`
+const code = (snippet, classes) => html`
+  <pre class="pre-scrollable ${classes}"><code class="json">${JSON.stringify(snippet, null, 2)}</code></pre>
+`
 
-const codeWithHeadline = (headline, snippet) => html`<h6>${headline}</h6><code class="json">${JSON.stringify(snippet, null, 2)}</code>`
+export const exampleObject = (headline, example, renderHeadline = true, classes = '') => html`
+${renderHeadline ? html`<h6>${headline}</h6>` : ''}
+${example.summary ? html`<p class="summary">${example.summary}</p>` : ''}
+${example.description ? html`<div class="description">${richText(example.description)}</div>` : ''}
+${example.value ? code(example.value, classes) : ''}
+${example.externalValue ? html`<a href="${example.externalValue}">External Example</a>` : ''}
+`
 
 // TODO: improve example rendering (other formats? external values? etc.)
 // TODO: render encoding information http://spec.openapis.org/oas/v3.0.2#encoding-object
@@ -14,7 +22,7 @@ const template = ({ mediaType, mediaTypeObject, hasExamples } = {}) => html`
     <div class="row">
       <div class="col-md-${hasExamples ? 6 : 11} schema">${mediaTypeObject.schema ? code(mediaTypeObject.schema) : ''}</div>
       <div class="col-md-${hasExamples ? 6 : 1} example ${hasExamples ? '' : 'empty'}">${mediaTypeObject.examples
-        ? html`<pre class="pre-scrollable">${Object.entries(mediaTypeObject.examples).map(([exampleName, examples]) => codeWithHeadline(exampleName, examples))}</pre>`
+        ? html`<pre class="pre-scrollable">${Object.entries(mediaTypeObject.examples).map(([exampleName, example]) => exampleObject(exampleName, example))}</pre>`
         : code(mediaTypeObject.example)
         }</div>
     </div>
