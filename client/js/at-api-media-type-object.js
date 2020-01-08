@@ -7,6 +7,7 @@ const code = snippet => html`<pre class="pre-scrollable"><code class="json">${JS
 const codeWithHeadline = (headline, snippet) => html`<h6>${headline}</h6><code class="json">${JSON.stringify(snippet, null, 2)}</code>`
 
 // TODO: improve example rendering (other formats? external values? etc.)
+// TODO: render encoding information http://spec.openapis.org/oas/v3.0.2#encoding-object
 const template = ({ mediaType, mediaTypeObject, hasExamples } = {}) => html`
   <h5>${mediaType}</h5>
   <div class="container-fluid no-gutters">

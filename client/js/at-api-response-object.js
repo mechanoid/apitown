@@ -4,6 +4,7 @@ import { richText } from './helpers/rendering.js'
 import { parameterTemplate } from './at-api-spec-parameters.js'
 import { apiMediaTypeObject } from './at-api-media-type-object.js'
 
+// TODO: think about rendering links (even when they do not work in a REST way (operation vs. resource))
 const headersTemplate = headers => html`
 <h6>Response Headers</h6>
 <table class="table">
