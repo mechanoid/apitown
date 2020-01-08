@@ -33,20 +33,21 @@ http://localhost:5002/?spec=example-specs/petstore-example.3.0.json#{resource-id
 
 In general it is recommended to use a technical Link Relation as Identifier.
 
+### New Properties
 
-### `x-link-rel`
+#### `x-link-rel`
 
 A property extension to a [Path Item Object](http://spec.openapis.org/oas/v3.0.2#pathItemObject)
 Assign a link-relation to this resource. This property is used as primary Resource Id if given.
 
-### `x-link-rel-aliases`
+#### `x-link-rel-aliases`
 
 A property extension to a [Path Item Object](http://spec.openapis.org/oas/v3.0.2#pathItemObject)
 possibility to show different Link Relations pointing to the same Resource.
 
 (Not yet implemented)
 
-### `x-resource-name`
+#### `x-resource-name`
 
 A property extension to a [Path Item Object](http://spec.openapis.org/oas/v3.0.2#pathItemObject)
 Adds a natural Language Name for a Resource. This is used e.g. in Headlines or in the Navigation
