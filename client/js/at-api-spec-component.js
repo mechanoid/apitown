@@ -2,11 +2,16 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { parameterGroupTemplate } from './at-api-spec-parameters.js'
 import { apiResponseObject } from './at-api-response-object.js'
-import { exampleObject } from './at-api-media-type-object.js'
+import { exampleObject, code } from './at-api-media-type-object.js'
 import { apiRequestBodyObject } from './at-api-request-body-object.js'
 
 const componentRendererByCategory = {
-  schemas: () => {},
+  schemas: (componentName, component) => html`
+    <h3>${componentName}</h3>
+    <div class="container-fluid">
+      ${code(component, 'schema')}
+    </div>
+  `,
   responses: (componentName, component) => html`
     <h3>${componentName}</h3>
     ${apiResponseObject({ responseCode: null, response: component, headline: false })}

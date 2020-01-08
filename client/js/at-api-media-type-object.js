@@ -2,7 +2,7 @@
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { richText } from './helpers/rendering.js'
 
-const code = (snippet, classes) => html`
+export const code = (snippet, classes) => html`
   <pre class="pre-scrollable ${classes}"><code class="json">${JSON.stringify(snippet, null, 2)}</code></pre>
 `
 
