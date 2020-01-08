@@ -3,6 +3,7 @@ import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { parameterGroupTemplate } from './at-api-spec-parameters.js'
 import { apiResponseObject } from './at-api-response-object.js'
 import { exampleObject } from './at-api-media-type-object.js'
+import { apiRequestBodyObject } from './at-api-request-body-object.js'
 
 const componentRendererByCategory = {
   schemas: () => {},
@@ -18,7 +19,10 @@ const componentRendererByCategory = {
     <h3>${componentName}</h3>
     ${exampleObject(null, component, false, 'example')}
   `,
-  requestBodies: () => {},
+  requestBodies: (componentName, component) => html`
+    <h3>${componentName}</h3>
+    ${apiRequestBodyObject({ requestBody: component, headline: false })}
+  `,
   headers: () => {},
   securitySchemes: () => {},
   links: () => {},

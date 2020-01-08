@@ -3,22 +3,21 @@ import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { richText } from './helpers/rendering.js'
 import { apiMediaTypeObject } from './at-api-media-type-object.js'
 
-const template = ({ description, content, required } = {}) => html`
-  <h4>
-    Request Body
-    <span class="required-hint">
-      ${required ? html`<strong>(required)</strong>` : ''}
-    </span>
-  </h4>
+export const template = ({ description, content, required, headline } = {}) => html`
+  ${headline ? html`<h4>Request Body</h4>` : ''}
+  <span class="required-hint">
+    ${required ? html`<strong>(required)</strong>` : ''}
+  </span>
 
   ${description ? html`<div class="description">${richText(description)}</div>` : ''}
   ${content ? Object.entries(content).map(([mediaType, mediaTypeObject]) => apiMediaTypeObject({ mediaType, mediaTypeObject })) : ''}
 `
 
 class ApiRequestBodyObject extends HTMLElement {
-  constructor ({ requestBody } = {}) {
+  constructor ({ requestBody, headline = true } = {}) {
     super()
     this.requestBody = requestBody
+    this.headline = headline
   }
 
   connectedCallback () {
@@ -26,7 +25,7 @@ class ApiRequestBodyObject extends HTMLElement {
   }
 
   render () {
-    render(template({ ...this.requestBody }), this)
+    render(template({ ...this.requestBody, headline: this.headline }), this)
   }
 }
 

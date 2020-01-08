@@ -105,29 +105,7 @@
       "post": {
         "summary": "Create a pet",
         "requestBody": {
-          "description": "In culpa qui officia deserunt mollit anim id est laborum.",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Pet"
-              },
-              "example": {
-                "summary": "Pet Example",
-                "externalValue": "http://foo.bar/examples/user-example.json"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Pet"
-              },
-              "examples": {
-                  "user" : {
-                    "$ref": "#/components/schemas/PetXML"
-                  }
-                }
-            }
-          }
+          "$ref": "#/components/requestBodies/CreatePetBody"
         },
         "responses": {
           "201": {
@@ -153,6 +131,33 @@
     }
   },
   "components": {
+    "requestBodies": {
+      "CreatePetBody": {
+        "description": "In culpa qui officia deserunt mollit anim id est laborum.",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            },
+            "example": {
+              "summary": "Pet Example",
+              "externalValue": "http://foo.bar/examples/user-example.json"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            },
+            "examples": {
+                "user" : {
+                  "$ref": "#/components/schemas/PetXML"
+                }
+              }
+          }
+        }
+      }
+    },
     "examples": {
       "PetXML": {
         "summary": "Pet example in XML",
