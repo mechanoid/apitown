@@ -14,18 +14,19 @@ const headersTemplate = headers => html`
   })}
 </table>`
 
-const template = ({ responseCode, response }) => html`
-  <h5>${responseCode}</h5>
+export const template = ({ responseCode, response, headline = true }) => html`
+  ${headline ? html`<h5>${responseCode}</h5>` : ''}
   ${response.description ? html`<div class="description">${richText(response.description)}</div>` : ''}
   ${response.headers ? headersTemplate(response.headers) : ''}
   ${response.content ? Object.entries(response.content).map(([mediaType, mediaTypeObject]) => apiMediaTypeObject({ mediaType, mediaTypeObject })) : ''}
 `
 
 class ApiResponseObject extends HTMLElement {
-  constructor ({ responseCode, response } = {}) {
+  constructor ({ responseCode, response, headline = true } = {}) {
     super()
     this.responseCode = responseCode
     this.response = response
+    this.headline = headline
   }
 
   connectedCallback () {
@@ -33,7 +34,7 @@ class ApiResponseObject extends HTMLElement {
   }
 
   render () {
-    render(template({ responseCode: this.responseCode, response: this.response }), this)
+    render(template({ responseCode: this.responseCode, response: this.response, headline: this.headline }), this)
   }
 }
 

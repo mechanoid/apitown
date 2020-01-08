@@ -88,22 +88,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A paged array of pets",
-            "headers": {
-              "x-next": {
-                "description": "A link to the next page of responses",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pets"
-                }
-              }
-            }
+            "$ref": "#/components/responses/PetList"
           },
           "default": {
             "description": "unexpected error",
@@ -169,6 +154,26 @@
     }
   },
   "components": {
+    "responses": {
+      "PetList": {
+        "description": "A paged array of pets",
+        "headers": {
+          "x-next": {
+            "description": "A link to the next page of responses",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3": {
+            "schema": {
+              "$ref": "#/components/schemas/Pets"
+            }
+          }
+        }
+      }
+    },
     "parameters": {
       "skipParam": {
         "name": "skip",

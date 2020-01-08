@@ -1,13 +1,17 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import { parameterGroupTemplate } from './at-api-spec-parameters.js'
+import { apiResponseObject } from './at-api-response-object.js'
 
 const componentRendererByCategory = {
   schemas: () => {},
-  responses: () => {},
+  responses: (componentName, component) => html`
+    <h3>${componentName}</h3>
+    ${apiResponseObject({ responseCode: null, response: component, headline: false })}
+  `,
   parameters: (componentName, component) => html`
     <h3>${componentName}</h3>
-    ${parameterGroupTemplate(componentName, [component], false)}
+    ${parameterGroupTemplate('', [component], false)}
   `,
   examples: () => {},
   requestBodies: () => {},
