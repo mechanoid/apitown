@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
+  "engines" : {
+    "node" : ">=13.5.0"
+  },
   "bin": {
     "apitown": "./bin/apitown.js"
   },
@@ -27,8 +30,8 @@
     "marked": "^0.8.0",
     "morgan": "^1.9.1",
     "pug": "^2.0.4",
-    "sass": "^1.24.0",
-    "skeme": "^1.0.1",
+    "sass": "^1.24.3",
+    "skeme": "^1.0.3",
     "transliteration": "^2.1.8"
   },
   "devDependencies": {

@@ -1,9 +1,14 @@
+import { fileURLToPath } from 'url'
 import path from 'path'
 import express from 'express'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import 'pug'
 import { provideAsset } from './helpers/assets.js'
+import { isDevelopment } from './helpers/app.js'
+
+// because of esm modules we need to go for import.meta, which is not yet valid to eslint :/
+const __dirname = fileURLToPath(import.meta.url)
 
 console.info('')
 
@@ -37,6 +42,10 @@ app.locals.assets.vendor = { mainCSS, jsYaml } // make assetPaths availabel in v
 
 const exampleSpecPath = '/example-specs'
 console.info(`serve ${chalk.yellow(exampleSpecPath)}`)
-app.use(exampleSpecPath, express.static(path.resolve('./example-specs')))
+
+if (isDevelopment()) {
+  const examplesFolder = path.resolve(__dirname, '../../../example-specs')
+  app.use(exampleSpecPath, express.static(examplesFolder))
+}
 
 export default app
