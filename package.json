@@ -13,7 +13,7 @@
   "scripts": {
     "build:css": "sass client/css/main.sass dist/css/main.css",
     "watch:css": "npm run build:css && npm run build:css -- --watch",
-    "start": "node --experimental-modules -r dotenv/config ./bin/apitown.js",
+    "start": "node --experimental-modules -r dotenv/config ./bin/apitown.js --serve=./example-specs:/example-specs",
     "test": "npx cypress open --config-file cypress.json",
     "build": "npm run build:css",
     "watch": "npm run watch:css"
