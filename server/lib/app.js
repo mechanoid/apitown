@@ -1,27 +1,25 @@
-import { fileURLToPath } from 'url';
-import { join, resolve, dirname } from 'path'
+
+import { join, resolve } from 'path'
 import express from 'express'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import 'pug'
 import { provideAsset } from './helpers/assets.js'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default ({ serveStatic } = {}) => {
+export default ({ serveStatic, apiTownModuleRoot } = {}) => {
   console.info('')
 
   const app = express()
   app.use(morgan('combined'))
   app.set('view engine', 'pug')
-  app.set('views', resolve(__dirname, '../views'))
+  app.set('views', resolve(apiTownModuleRoot, './server/views'))
 
   const appAssetPath = '/assets/app'
   console.info(`serve ${chalk.yellow(appAssetPath)}`)
-  app.use(appAssetPath, express.static(resolve(__dirname, '../../client')))
+  app.use(appAssetPath, express.static(resolve(apiTownModuleRoot, './client')))
 
-  const mainCSS = provideAsset('dist/css/main.css', { app, root: 'dist', prefix: '/assets' })
-  const jsYaml = provideAsset('node_modules/js-yaml/dist/js-yaml.min.js', { app, root: 'node_modules', prefix: '/assets/vendor' })
+  const mainCSS = provideAsset('dist/css/main.css', { app, root: 'dist', prefix: '/assets', resolveRoot: apiTownModuleRoot })
+  const jsYaml = provideAsset('node_modules/js-yaml/dist/js-yaml.min.js', { app, root: 'node_modules', prefix: '/assets/vendor', resolveRoot: apiTownModuleRoot })
 
   // serve dependencassets, so they can be included in JS imports
   const vendorLibs = [
@@ -33,7 +31,7 @@ export default ({ serveStatic } = {}) => {
     'node_modules/transliteration/dist/browser/bundle.esm.min.js'
   ]
 
-  vendorLibs.forEach(lib => provideAsset(lib, { app, root: 'node_modules', prefix: '/assets/vendor' }))
+  vendorLibs.forEach(lib => provideAsset(lib, { app, root: 'node_modules', prefix: '/assets/vendor', resolveRoot: apiTownModuleRoot }))
 
   app.locals.assets = {}
   app.locals.assets.app = (libPath) => join(appAssetPath, libPath)

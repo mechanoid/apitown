@@ -10,11 +10,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * `/node_modules will be replaced by the prefix. By default it will be replaced
  * with `/vendor`.
  */
-export const provideAsset = (assetPath, { app, prefix = '/vendor', root = 'node_modules' }) => {
+export const provideAsset = (assetPath, { app, prefix = '/vendor', root = 'node_modules', resolveRoot }) => {
   const publicPath = assetPath.replace(new RegExp(`^/?${root}(/.*)$`), `${prefix}$1`)
 
   try {
-    const fullAssetPath = resolve(__dirname, '../../..', assetPath)
+    const fullAssetPath = resolve(resolveRoot, assetPath)
     console.info(`providing "${chalk.yellow(assetPath)}" as "${chalk.yellow(publicPath)}"`)
 
     app.use(publicPath, express.static(fullAssetPath))
