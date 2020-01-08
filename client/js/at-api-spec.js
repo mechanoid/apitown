@@ -1,4 +1,4 @@
-/* global customElements, HTMLElement, CustomEvent, hljs */
+/* global customElements, HTMLElement, CustomEvent, hljs, window */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
 import './at-error-event-handler.js'
 
@@ -30,6 +30,13 @@ class ATApiSpec extends HTMLElement {
       this.spec = await skema(this.apiSpec)
       this.render()
       hljs.initHighlighting()
+
+      // re-fresh anchor (because, SPA, you know ....)
+      if (window.location.hash) {
+        const desiredHash = window.location.hash.slice(1)
+        window.location.hash = ''
+        window.location.hash = '#' + desiredHash
+      }
     } catch (e) {
       const errorEvent = new CustomEvent('at-error', { bubbles: true, detail: e })
       this.dispatchEvent(errorEvent)
