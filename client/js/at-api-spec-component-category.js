@@ -1,8 +1,11 @@
 /* global customElements, HTMLElement */
 import { html, render } from '../../vendor/lit-html/lit-html.js'
-// import { apiSpecComponent } from './at-api-spec-component.js'
+import { apiSpecComponent } from './at-api-spec-component.js'
 
-const template = ({ componentCategory, components }) => html``
+const template = ({ componentCategory, components }) => html`
+  <h2>${componentCategory}</h2>
+  ${Object.entries(components).map(([componentName, component]) => apiSpecComponent({ componentCategory, componentName, component }))}
+`
 
 class ApiSpecComponentCategory extends HTMLElement {
   constructor ({ componentCategory, components } = {}) {

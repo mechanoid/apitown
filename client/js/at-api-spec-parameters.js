@@ -22,8 +22,8 @@ export const parameterTemplate = parameter => html`<tr class="${parameter.requir
   </td>
 </tr>`
 
-const parameterGroupTemplate = (parameterType, parameters) => html`
-  <h5>${parameterType}</h5>
+export const parameterGroupTemplate = (parameterType, parameters, headline = true) => html`
+  ${headline ? html`<h5>${parameterType}</h5>` : ''}
   <table class="table">
     ${parameters.map(parameterTemplate)}
   </table>
