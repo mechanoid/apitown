@@ -12,12 +12,24 @@ const pathLinkTemplate = ([path, pathItem]) => html`<li>
   </a>
 </li>`
 
-const template = ({ paths, spec }) => html`
+const componentLinkTemplate = (componentName, category) => html`<li>
+  <a href="#${`components-${category}-${componentName}`}">${componentName}</a>
+</li>`
+
+const componentLinkListTemplate = ([componentCategory, components = []]) => html`
+  <h4>${componentCategory}</h4>
+  <ul>${Object.keys(components).map(componentName => html`${componentLinkTemplate(componentName, componentCategory)}`)}</ul>
+`
+
+const template = ({ paths, components, spec }) => html`
   <nav>
     <h3 class="nav-headline">Resources</h3>
     <ul>
       ${paths.map(pathLinkTemplate)}
     </ul>
+
+    <h3 class="nav-headline">Components</h3>
+    ${components.map(componentLinkListTemplate)}
 
     <ul>
       ${spec.info.contact ? html`<li><a href="#spec-contact">Contact</a></li>` : ''}
@@ -44,8 +56,17 @@ class ApiContentNavigation extends HTMLElement {
     return this._paths
   }
 
+  get components () {
+    if (this._components) {
+      return this._components
+    }
+
+    this._components = Object.entries(this.spec.components) || []
+    return this._components
+  }
+
   render () {
-    render(template({ paths: this.paths, spec: this.spec }), this)
+    render(template({ paths: this.paths, components: this.components, spec: this.spec }), this)
   }
 }
 
