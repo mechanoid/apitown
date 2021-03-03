@@ -29,7 +29,7 @@
     "lit-html": "^1.1.2",
     "marked": "^0.8.0",
     "morgan": "^1.9.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sass": "^1.24.3",
     "skeme": "^1.0.3",
     "transliteration": "^2.1.8"
